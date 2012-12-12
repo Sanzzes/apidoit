@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="media/css/jquery.mobile-1.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/idoit.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/iconpack.css" />
+    <script type="text/javascript" src="media/js/jquery.js"></script>
+    <script type="text/javascript" src="media/js/jquery.mobile-1.2.0.js"></script>
+    <script type="text/javascript" src="media/js/controller.js"></script>
+    <title>i-doit Mobile</title>
+
+</head>
+<body>
+<div  data-role="page" id="index">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>i-doit</h1>
+        <div id="catg_edit">
+            <a href="#" id="edit_catg_obj" class="ui-btn-right" data-role="button" data-icon="edit" data-iconpos="notext"></a>
+        </div>
+        <div id="catgnav">
+            <a href="#" id="menu_catg" class="ui-btn-left" data-role="button" obj_id_r = "" type_id_r type= "" data-icon="grid" data-iconpos="notext"></a>
+        </div>
+        <div id="catg_edit_mode" style="display: none">
+            <a href="#" id="catg_save_obj" class="ui-btn-left" data-role="button" data-icon="check" data-iconpos="notext"></a>
+            <a href="#" id="catg_cancel_obj" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        </div>
+    </div><!-- /header -->
+    <div data-role="content" id="content-role">
+        <div align="center">Willkommen bei der Mobilen i-doit Anwendung<br />
+            Diese APP Dient zu Demo zwecken, um zu zeigen<br />
+            was mit der JSOn Api von i-doit möglich ist.
+            <br />
+            <hr>
+            Author: Steven sbohm@synetics.de Bohm
+        </div>
+    </div>
+    <div data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar" data-iconpos="left" >
+            <ul>
+                <li><a href="#" id="menu_btn" data-transition="slide" data-icon="grid">Menü</a></li>
+                <li><a href="index.php?param=config/main" id="settings_btn" data-icon="gear">Einstellungen</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+</div>
+</body>
+</html>
