@@ -1,0 +1,34 @@
+<cordova>
+    <!-- access elements control the Android whitelist. Domains are assumed blocked unless set otherwise -->
+    <access origin="http://127.0.0.1*"/>
+    <!-- allow local pages -->
+
+    <!-- <access origin="https://example.com" /> allow any secure requests to example.com -->
+
+    <!-- <access origin="https://example.com" subdomains="true" /> such as above, but including subdomains, such as www -->
+    <access origin=".*"/>
+    <log level="DEBUG"/>
+    <preference value="true" name="useBrowserHistory"/>
+    <preference value="false" name="exit-on-suspend"/>
+
+    <plugins>
+        <plugin value="org.apache.cordova.App" name="App"/>
+        <plugin value="org.apache.cordova.GeoBroker" name="Geolocation"/>
+        <plugin value="org.apache.cordova.Device" name="Device"/>
+        <plugin value="org.apache.cordova.AccelListener" name="Accelerometer"/>
+        <plugin value="org.apache.cordova.CompassListener" name="Compass"/>
+        <plugin value="org.apache.cordova.AudioHandler" name="Media"/>
+        <plugin value="org.apache.cordova.CameraLauncher" name="Camera"/>
+        <plugin value="org.apache.cordova.ContactManager" name="Contacts"/>
+        <plugin value="org.apache.cordova.FileUtils" name="File"/>
+        <plugin value="org.apache.cordova.NetworkManager" name="NetworkStatus"/>
+        <plugin value="org.apache.cordova.Notification" name="Notification"/>
+        <plugin value="org.apache.cordova.Storage" name="Storage"/>
+        <plugin value="org.apache.cordova.FileTransfer" name="FileTransfer"/>
+        <plugin value="org.apache.cordova.Capture" name="Capture"/>
+        <plugin value="org.apache.cordova.BatteryListener" name="Battery"/>
+        <plugin value="org.apache.cordova.SplashScreen" name="SplashScreen"/>
+        <plugin value="org.apache.cordova.Echo" name="Echo"/>
+        <plugin value="org.apache.cordova.Globalization" name="Globalization"/>
+    </plugins>
+</cordova>
