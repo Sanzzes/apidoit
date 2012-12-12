@@ -4,13 +4,47 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="media/css/jquery.mobile-1.2.0.css" />
-    <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+
     <link rel="stylesheet" type="text/css" href="media/css/idoit.css" />
     <link rel="stylesheet" type="text/css" href="media/css/main.css" />
     <link rel="stylesheet" type="text/css" href="media/css/iconpack.css" />
     <script type="text/javascript" src="media/js/jquery.js"></script>
     <script type="text/javascript" src="media/js/jquery.mobile-1.2.0.js"></script>
     <script type="text/javascript" src="media/js/controller.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // Cordova is ready
+        //
+        function onDeviceReady() {
+            var db = window.openDatabase("config.sqlite", "1.0", "confdb", 512000);
+
+            function createDB(tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url,username,password,language,mandator)');
+            }
+
+            function queryDB(tx) {
+                tx.executeSql('SELECT * FROM CONFIG', [], querySuccess, errorCB);
+            }
+
+            // Query the success callback
+            //
+            function querySuccess(tx, results) {
+                console.log("Returned rows = " + results.rows.length);
+                // this will be true since it was a select statement and so rowsAffected was 0
+                if (!results.rowsAffected) {
+                    console.log('No rows affected!');
+                    return false;
+                }
+        }
+
+            function errorCB(err) {
+                alert("Error processing SQL: "+err.code);
+            }
+      }
+
+    </script>
     <title>i-doit Mobile</title>
 
 </head>
