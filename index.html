@@ -19,30 +19,28 @@
         //
         function onDeviceReady() {
             var db = window.openDatabase("config.sqlite", "1.0", "confdb", 512000);
+            db.transaction(createDB, errorCB, queryDB)
 
-            function createDB(tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url,username,password,language,mandator)');
-            }
-
-            function queryDB(tx) {
-                tx.executeSql('SELECT * FROM CONFIG', [], querySuccess, errorCB);
-            }
-
-            // Query the success callback
-            //
-            function querySuccess(tx, results) {
-                alert("Returned rows = " + results.rows.length);
-                // this will be true since it was a select statement and so rowsAffected was 0
-                if (!results.rowsAffected) {
-                    alert('No rows affected!');
-                    return false;
-                }
+      }
+        function createDB(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url,username,password,language,mandator)');
         }
 
-            function errorCB(err) {
-                alert("Error processing SQL: "+err.code);
+        function queryDB(tx) {
+            tx.executeSql('SELECT * FROM CONFIG', [], querySuccess, errorCB);
+        }
+
+        function querySuccess(tx, results) {
+            alert("Returned rows = " + results.rows.length);
+            // this will be true since it was a select statement and so rowsAffected was 0
+            if (!results.rowsAffected) {
+                alert('No rows affected!');
+                return false;
             }
-      }
+        }
+        function errorCB(err) {
+            alert("Error processing SQL: "+err.code);
+        }
 
     </script>
     <title>i-doit Mobile</title>
