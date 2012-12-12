@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         id        = "com.idoit.mobile"
-        versionCode="10" 
+        versionCode="10"
         version   = "0.0.1">
 
     <!-- versionCode is optional and Android only -->
@@ -10,7 +10,7 @@
     <icon src="icon.png" width="32" height="32" />
 
     <description>
-        Dies ist eine Testversion unserer Idoit Api mit PhoneGap 
+        Dies ist eine Testversion unserer Idoit Api mit PhoneGap
     </description>
 
     <author href="https://steven-bohm.net" email="info@steven-bohm.net">
