@@ -19,12 +19,11 @@
         //
         function onDeviceReady() {
             var db = window.openDatabase("config.sqlite", "1.0", "confdb", 512000);
-            alert(window.openDatabase("config.sqlite", "1.0", "confdb", 512000));
             db.transaction(createDB, errorCB, queryDB)
 
       }
         function createDB(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url,username,password,language,mandator)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url,username,password,language,mandator)', [], querySuccess, errorCB());
         }
 
         function queryDB(tx) {
