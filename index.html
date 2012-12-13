@@ -18,6 +18,7 @@
         // Cordova is ready
         //
         function onDeviceReady() {
+            alert('lol');
             var db = window.openDatabase("config.sqlite", "1.0", "confdb", 512000);
             db.transaction(createDB, errorCB, queryDB)
 
