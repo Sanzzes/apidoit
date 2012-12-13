@@ -23,7 +23,7 @@
 
       }
         function createDB(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url,username,password,language,mandator)', [], querySuccess, errorCB());
+            tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url varchar(160), username varchar(60), password varchar(60), language varchar(5), mandator varchar(5))', [], queryDB,  errorCB);
         }
 
         function queryDB(tx) {
