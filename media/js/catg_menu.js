@@ -103,24 +103,24 @@ $(document).delegate("#obj_menu", "pagebeforecreate", function() {
             if (p_json_return.result.hasOwnProperty(i)) {
                 item = p_json_return.result[i];
                 if (item.tree_group == 1) {
-                    list_tree_1.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')" data-transition="slide" class="menu_catg">' + item.title + '</a></li>');
+                    list_tree_1.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')"  class="menu_catg">' + item.title + '</a></li>');
                 }
                 if (item.tree_group == 2) {
-                    list_tree_2.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')" data-transition="slide"  class="menu_catg">' + item.title + '</a></li>');
+                    list_tree_2.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')"   class="menu_catg">' + item.title + '</a></li>');
                 }
                 if (item.tree_group == 3) {
-                    list_tree_3.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')" data-transition="slide"  class="menu_catg">' + item.title + '</a></li>');
+                    list_tree_3.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')"   class="menu_catg">' + item.title + '</a></li>');
                 }
 
                 if (item.tree_group == 1000) {
-                    list_tree_4.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')" data-transition="slide" class="menu_catg">' + item.title + '</a></li>');
+                    list_tree_4.push('<li><a href="#obj_menu" onclick="javascript:clicked_item('+ item.id +')"  class="menu_catg">' + item.title + '</a></li>');
                 }
 
             }
 
         }
 
-        $('#mainMenu > #menu_listitems').html(''+
+        $('#menu_listitems').html(''+
             '<div data-role="collapsible" data-inset="false" data-expanded-icon="arrow-d" data-collapsed-icon="arrow-r" data-content-theme="d" data-theme="b" class="menu_tree">' +
             '<h3>Software</h3>' +
             '<ul data-role="listview" class="menu_lst">' +
@@ -147,7 +147,7 @@ $(document).delegate("#obj_menu", "pagebeforecreate", function() {
             '</div>');
 
         $('.menu_lst').listview();
-        $('.menu_tree').collapsible();
+        $('.menu_tree').collapsible({inset: true});
 
     }
 
@@ -165,8 +165,8 @@ function buildCatgMenu(p_json_return, p_obj_type) {
 
     }
 
-    $('#objMenu').html('' +
-        '<ul data-role="listview" class="menu_lst">' +
+    $('#objMenu_listitems').html('' +
+        '<ul data-role="listview" class="menu_lst" data-inset="true">' +
         list.join("") +
         '</ul>' +
         '</div>');
