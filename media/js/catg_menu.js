@@ -9,10 +9,14 @@
     var l_last_response,
         l_menu,
         l_catg_menu,
-        l_clicked;
+        l_clicked,
+        l_catg_id,
+        l_obj_type_id;
 
-function clicked_item(p_item){
-    l_clicked = p_item;
+function clicked_item(p_item, p_catg, p_obj_type){
+     l_clicked = p_item;
+     l_catg_id = p_catg
+     l_obj_type_id = p_obj_type
 };
 
 $(document).delegate("#obj_menu", "pagebeforecreate", function() {
@@ -33,9 +37,57 @@ $(document).delegate("#obj_menu", "pagebeforecreate", function() {
         '}';
     request(aData, function (json) {
         l_catg_menu = json;
-        buildCatgMenu(l_catg_menu,catg_id);
+        buildObjMenu(l_catg_menu,catg_id);
     });
 });
+
+$(document).delegate('#obj_details', "pagebeforecreate", function(){
+    var obj_id = l_clicked;
+    var catg_id = l_catg_id;
+    var obj_type = l_obj_type_id;
+    var aData = '{ "method": "cmdb.category",' +
+        '"params": { ' +
+        '"session": {' +
+        '"username": "admin",' +
+        '"password": "21232f297a57a5a743894a0e4a801fc3",' +
+        '"language": "de",' +
+        '"mandator": 1},' +
+        '"objID":' + obj_id + ',' +
+        '"catgID": ' + catg_id +
+        '},' +
+        '"jsonrpc": "2.0"' +
+        '}';
+    request(aData, function (json) {
+        l_obj_detail_menu = json;
+        buildDetail(l_obj_detail_menu, obj_id, obj_type);
+    });
+
+});
+
+function getCatgInfo(){
+
+}
+
+function getCatg(p_obj_id, p_obj_type_id){
+    var obj_id = p_obj_id;
+    var obj_type_id = p_obj_type_id;
+    var aData = '{ "method": "cmdb.object_type_categories",' +
+        '"params": { ' +
+        '"session": {' +
+        '"username": "admin",' +
+        '"password": "21232f297a57a5a743894a0e4a801fc3",' +
+        '"language": "de",' +
+        '"mandator": 1},' +
+        '"type":' + obj_type_id + ',' +
+        '"order_by": "title"' +
+        '},' +
+        '"jsonrpc": "2.0"' +
+        '}';
+    request(aData, function (json) {
+        l_obj_catg_menu = json;
+        buildCatgMenu(l_obj_catg_menu,p_obj_id, obj_type_id);
+    });
+}
 
     function loadMenu() {
         if (typeof l_menu == 'undefined') {
@@ -151,7 +203,7 @@ $(document).delegate("#obj_menu", "pagebeforecreate", function() {
 
     }
 
-function buildCatgMenu(p_json_return, p_obj_type) {
+function buildObjMenu(p_json_return, p_obj_type) {
 
     var list = [],
         item;
@@ -159,7 +211,7 @@ function buildCatgMenu(p_json_return, p_obj_type) {
     for (var i in p_json_return.result) {
         if (p_json_return.result.hasOwnProperty(i)) {
             item = p_json_return.result[i];
-            list.push('<li><a href="#" data_obj_type = "'+ p_obj_type +'" data-obj_catg_id="1" data-obj_id="' + item.id + '" class="menu_obj_details">' + item.title + '</a></li>');
+            list.push('<li><a href="#obj_details" onclick="javascript:clicked_item('+ item.id +',1,'+ p_obj_type + ')" class="menu_obj_details">' + item.title + '</a></li>');
 
         }
 
@@ -174,3 +226,41 @@ function buildCatgMenu(p_json_return, p_obj_type) {
 
     $('.menu_lst').listview();
 }
+
+function buildDetail(p_json_return, p_obj_id, p_obj_type) {
+           // $("input[id^=obj_name]:last").val(p_json_return.result[0].title);
+        getCatg(p_obj_id,p_obj_type);
+
+
+}
+
+function buildCatgMenu(p_json_return, p_obj_id, p_obj_type) {
+
+var list = [],
+        item,
+        item_temp,
+        s = 0;
+
+    for (var i in p_json_return.result) {
+    if (p_json_return.result.hasOwnProperty(i)) {
+        item_temp = p_json_return.result[i];
+      for (var s in item_temp){
+          item = item_temp[s];
+        list.push('<li><a href="#obj_details" onclick="javascript:clicked_item('+ item.id +','+ item.id +','+ p_obj_type + ')" class="menu_obj_details">' + item.title + '</a></li>');
+    }
+    }
+   }
+
+    $('#panel_content').html('' +
+        '<ul data-role="listview" class="menu_lst_panel" data-inset="true">' +
+        list.join("") +
+        '</ul>' +
+        '</div>');
+
+    $('.menu_lst_panel').listview();
+}
+
+$(document).on('swiperight', function(){
+    $('#obj_catg_panel').panel('open');
+})
+
