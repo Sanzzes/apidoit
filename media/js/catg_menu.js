@@ -19,6 +19,16 @@ function clicked_item(p_item, p_catg, p_obj_type){
      l_obj_type_id = p_obj_type
 };
 
+$(document).on('click', '#catg_menu_btn', function(){
+
+    clicked_item($(this).attr('data_obj_id'),0,$(this).attr('data_type_id'));
+    $("#obj_catg_menu").trigger("pagebeforecreate");
+})
+
+$(document).on('click', '.menu_obj_details', function(){
+    $("#obj_details").trigger("pagebeforecreate");
+})
+
 $(document).delegate("#obj_menu", "pagebeforecreate", function() {
 
     var catg_id = l_clicked;
@@ -45,6 +55,10 @@ $(document).delegate('#obj_details', "pagebeforecreate", function(){
     var obj_id = l_clicked;
     var catg_id = l_catg_id;
     var obj_type = l_obj_type_id;
+
+    $('#catg_menu_btn').attr('data_obj_id', l_clicked);
+    $('#catg_menu_btn').attr('data_type_id',l_obj_type_id);
+
     var aData = '{ "method": "cmdb.category",' +
         '"params": { ' +
         '"session": {' +
@@ -68,9 +82,9 @@ function getCatgInfo(){
 
 }
 
-function getCatg(p_obj_id, p_obj_type_id){
-    var obj_id = p_obj_id;
-    var obj_type_id = p_obj_type_id;
+$(document).delegate('#obj_catg_menu', "pagebeforecreate", function(){
+    var obj_id = l_clicked;
+    var obj_type_id = l_obj_type_id;
     var aData = '{ "method": "cmdb.object_type_categories",' +
         '"params": { ' +
         '"session": {' +
@@ -85,9 +99,10 @@ function getCatg(p_obj_id, p_obj_type_id){
         '}';
     request(aData, function (json) {
         l_obj_catg_menu = json;
-        buildCatgMenu(l_obj_catg_menu,p_obj_id, obj_type_id);
+        buildCatgMenu(l_obj_catg_menu, obj_id, obj_type_id);
     });
-}
+})
+
 
     function loadMenu() {
         if (typeof l_menu == 'undefined') {
@@ -229,7 +244,6 @@ function buildObjMenu(p_json_return, p_obj_type) {
 
 function buildDetail(p_json_return, p_obj_id, p_obj_type) {
            // $("input[id^=obj_name]:last").val(p_json_return.result[0].title);
-        getCatg(p_obj_id,p_obj_type);
 
 
 }
@@ -246,12 +260,12 @@ var list = [],
         item_temp = p_json_return.result[i];
       for (var s in item_temp){
           item = item_temp[s];
-        list.push('<li><a href="#obj_details" onclick="javascript:clicked_item('+ item.id +','+ item.id +','+ p_obj_type + ')" class="menu_obj_details">' + item.title + '</a></li>');
+        list.push('<li><a href="#obj_details" onclick="javascript:clicked_item('+ p_obj_id +','+ item.id +','+ p_obj_type + ')" class="menu_obj_details">' + item.title + '</a></li>');
     }
     }
    }
 
-    $('#panel_content').html('' +
+    $('#obj_catg_listitems').html('' +
         '<ul data-role="listview" class="menu_lst_panel" data-inset="true">' +
         list.join("") +
         '</ul>' +
