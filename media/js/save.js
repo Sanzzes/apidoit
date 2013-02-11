@@ -14,8 +14,8 @@ $(document).on('click','#saveConfig', function(){
 })
 
 $(document).ready(function(){
-    $('hostname').val(window.localStorage.getItem('hostname'));
-    $('apikey').val(window.localStorage.getItem('apikey'));
-    $('lang').val(window.localStorage.getItem('language'));
+    $('#hostname').val(window.localStorage.getItem('hostname'));
+    $('#apikey').val(window.localStorage.getItem('apikey'));
+    $('#lang').val(window.localStorage.getItem('language'));
 })
 
