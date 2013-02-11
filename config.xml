@@ -16,5 +16,8 @@
     <author href="https://steven-bohm.net" email="info@steven-bohm.net">
         Steven Bohm
     </author>
+	<plugin name="SplashScreen" value="org.apache.cordova.SplashScreen"/>
+	<plugin name="File" value="org.apache.cordova.FileUtils" />
+    <plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />
 
 </widget>
