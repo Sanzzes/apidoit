@@ -16,6 +16,7 @@ $(document).on('click','#saveConfig', function(){
 })
 
 function onDeviceReady() {
+    alert('TeST   '+window.localStorage.getItem("hostname"));
     $('#hostname').val(window.localStorage.getItem("hostname"));
     $('#apikey').val(window.localStorage.getItem("apikey"));
     $('#lang').val(window.localStorage.getItem("language"));
