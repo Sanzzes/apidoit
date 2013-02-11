@@ -11,6 +11,12 @@ $(document).on('click', '#backButton', function(){
 })
 
 $(document).bind("pagebeforechange", function( event, data ) {
+    $.mobile.loading('show', {
+        text:'Wird geladen',
+        textVisible:true,
+        theme:'b',
+        html:""
+    });
     $.mobile.pageData = (data && data.options && data.options.pageData)
         ? data.options.pageData
         : null;
@@ -33,10 +39,11 @@ $(document).bind("pagebeforechange", function( event, data ) {
         '}';
     request(aData, function (json) {
         l_obj_detail_menu = json;
-        $('#headTitle').html(json.title);
+        $('#headTitle').html(json.result[0].title);
         $('#backButton').attr('href', 'obj_menu.html#obj_menu?type_id='+obj_type);
         buildDetail(l_obj_detail_menu, obj_id, obj_type);
     });
+    $.mobile.loading('hide');
 });
 
 

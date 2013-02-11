@@ -12,6 +12,12 @@ $(document).on('click', '.menu_obj_details', function(){
 
 
 $(document).bind("pagebeforechange", function( event, data ) {
+    $.mobile.loading('show', {
+        text:'Wird geladen',
+        textVisible:true,
+        theme:'b',
+        html:""
+    });
     $.mobile.pageData = (data && data.options && data.options.pageData)
         ? data.options.pageData
         : null;
@@ -34,6 +40,7 @@ $(document).bind("pagebeforechange", function( event, data ) {
         l_catg_menu = json;
         buildObjMenu(l_catg_menu,catg_id);
     });
+    $.mobile.loading('hide');
 });
 
 
