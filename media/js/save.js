@@ -6,6 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
 $(document).on('click','#saveConfig', function(){
     window.localStorage.setItem("hostname", $('#hostname').val());
     window.localStorage.setItem("apikey", $('#apikey').val());
@@ -13,9 +15,9 @@ $(document).on('click','#saveConfig', function(){
     alert('Gespeichert'+ window.localStorage.getItem('hostname'));
 })
 
-$(document).ready(function(){
-    $('#hostname').val(window.localStorage.getItem('hostname'));
-    $('#apikey').val(window.localStorage.getItem('apikey'));
-    $('#lang').val(window.localStorage.getItem('language'));
-})
+function onDeviceReady() {
+    $('#hostname').val(window.localStorage.getItem("hostname"));
+    $('#apikey').val(window.localStorage.getItem("apikey"));
+    $('#lang').val(window.localStorage.getItem("language"));
+}
 
