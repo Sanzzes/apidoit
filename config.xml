@@ -16,10 +16,8 @@
     <author href="https://steven-bohm.net" email="info@steven-bohm.net">
         Steven Bohm
     </author>
-    <plugins>
 	<plugin name="SplashScreen" value="org.apache.cordova.SplashScreen"/>
     <plugin name="Storage" value="org.apache.cordova.Storage" />
-    </plugins>
     <preference name="phonegap-version" value="2.3.0" />
     <preference name="splash-screen-duration" value="1000" />
     <gap:splash src="splash/android/splash.png" gap:platform="android" gap:density="ldpi" />
