@@ -11,12 +11,16 @@ $(document).on('click','#saveConfig', function(){
     window.localStorage.setItem("hostname", $('#hostname').val());
     window.localStorage.setItem("apikey", $('#apikey').val());
     window.localStorage.setItem("language", $('#lang').val());
-    alert('Gespeichert'+ window.localStorage.getItem('hostname'));
+    window.localStorage.setItem("username", $('#username').val());
+    window.localStorage.setItem("password", $('#password').val());
+    alert('Gespeichert');
 })
 
 $(document).bind("pagebeforechange", function( event, data ) {
     $('#hostname').val(window.localStorage.getItem("hostname"));
     $('#apikey').val(window.localStorage.getItem("apikey"));
     $('#lang').val(window.localStorage.getItem("language"));
+    $('#username').val(window.localStorage.getItem("username"));
+    $('#password').val(window.localStorage.getItem("password"));
 });
 

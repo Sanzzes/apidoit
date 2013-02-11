@@ -10,52 +10,12 @@
     <script type="text/javascript" src="media/js/jquery.mobile-1.3.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
     <script type="text/javascript">
-
-        /*$(document).ready(function(){
-            $.support.cors = true;
-
-        document.addEventListener("deviceready", onDeviceReady, false);
-        var idoit_url,
-                idoit_user,
-                idoit_pw,
-                idoit_lang,
-                idoit_mand;
-
-        // Cordova is ready
-        //
-
-        function onDeviceReady() {
-            var db = window.openDatabase("config.sqlite", "1.0", "confdb", 512000);
-            db.transaction(createDB, errorCB, queryDB)
-
-        }
-        function createDB(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (url varchar(160), username varchar(60), password varchar(60), language varchar(5), mandator varchar(5))', [], queryDB, errorCB);
-        }
-
-        function queryDB(tx) {
-            tx.executeSql('SELECT * FROM CONFIG', [], querySuccess, errorCB);
-        }
-
-        function querySuccess(tx, results) {
-            if (results.rows.length = 0) {
-                $('#content-role').html('');
-                $('#content-role').load("templates/config/config.html");
-            } else {
-                idoit_url = results.rows.item(0).url;
-                idoit_user = results.rows.item(0).username;
-                idoit_pw = results.rows.item(0).password;
-                idoit_lang = results.rows.item(0).language;
-                idoit_mand = results.rows.item(0).mandator;
-
-                alert(idoit_url);
+        $(document).bind("pageinit", function( event, data ) {
+            if(window.localStorage.getItem("username") === null){
+                alert('Benutzername oder Passwort sind nicht gesetzt !Setzen bitte!');
+                window.location = "templates/menu/config.html";
             }
-        }
-        function errorCB(err) {
-            alert("Error processing SQL: " + err.message);
-        }
-       });
-*/
+        });
     </script>
     <title>i-doit Mobile</title>
 
