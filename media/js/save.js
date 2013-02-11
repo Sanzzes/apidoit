@@ -15,7 +15,6 @@ $(document).on('click','#saveConfig', function(){
 })
 
 $(document).bind("pagebeforechange", function( event, data ) {
-    alert('TeST   '+window.localStorage.getItem("hostname"));
     $('#hostname').val(window.localStorage.getItem("hostname"));
     $('#apikey').val(window.localStorage.getItem("apikey"));
     $('#lang').val(window.localStorage.getItem("language"));
