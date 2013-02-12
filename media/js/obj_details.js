@@ -50,3 +50,11 @@ function buildDetail(p_json_return, p_obj_id, p_obj_type) {
 
 
 }
+
+/*
+$(document).on('swiperight', function(){
+    $('#obj_catg_panel').panel('open');
+})
+$(document).on('swipeleft', function(){
+    $('#obj_catg_panel').panel('close');
+})*/

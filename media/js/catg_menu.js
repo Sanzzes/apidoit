@@ -12,10 +12,6 @@
 
 
 
-
-
-
-
     function loadMenu() {
         if (typeof l_menu == 'undefined') {
             var page = $(this).attr('data-page');
@@ -108,8 +104,4 @@ function buildDetail(p_json_return, p_obj_id, p_obj_type) {
 
 
 }
-
-$(document).on('swiperight', function(){
-    $('#obj_catg_panel').panel('open');
-})
 

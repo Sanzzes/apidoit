@@ -14,15 +14,20 @@
 </head>
 <body>
 <div data-role="page" id="obj_details">
-    <div data-role="panel" data-theme="a" id="obj_catg_panel">
-
+    <div data-role="panel" data-theme="a" id="obj_catg_panel" data-display="overlay" data-dismissible="false">
+        <div data-role="controlgroup" data-type="vertical">
+        <a href="" data-ajax="false" rel="external" id="edit_obj_btn" data-role="button" data-theme="a">Neu Anlegen</a>
+        <a href="" data-ajax="false" rel="external" id="new_obj_btn" data-role="button" data-theme="a">Editieren</a>
+        <a href="obj_catg_menu.html#obj_catg_menu" data-ajax="false" rel="external" id="catg_obj_btn" data-role="button" data-theme="a">Kategorien</a>
+       </div>
     </div>
     <!-- /panel -->
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
-        <h1 id="headTitle"></h1>
-        <a href="#" class="ui-btn-right"  id="backButton" data-ajax="false" rel="external" data-role="button" data-icon="back" data-iconpos="left">Zurück</a>
-        <a href="obj_catg_menu.html#obj_catg_menu" data-ajax="false" rel="external" id="catg_obj_btn" class="ui-btn-left" data-role="button" data-icon="grid" data-iconpos="right"
-           data_obj_id="" data_type_id="" id="catg_menu_btn">Kategorien</a>
+        <h1></h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+            <a href="#obj_catg_panel" id="open_overlay_btn" data-role="button" data-icon="grid" data-iconpos="left">Menü</a>
+        <a href="#" id="backButton" data-ajax="false" rel="external" data-role="button" data-icon="back" data-iconpos="left">Zurück</a>
+        </div>
     </div>
     <!-- /header -->
     <div data-role="content" id="obj_details_form">
