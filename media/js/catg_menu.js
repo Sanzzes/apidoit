@@ -8,16 +8,11 @@
 
     var l_last_response,
         l_menu,
-        l_catg_menu,
-        l_clicked,
-        l_catg_id,
-        l_obj_type_id;
+        l_catg_menu;
 
 
 
-$(document).on('click', '#catg_menu_btn', function(){
-    $("#obj_catg_menu").trigger("pagebeforecreate");
-})
+
 
 
 

@@ -6,9 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-$(document).on('click', '#backButton', function(){
-    $("#obj_menu").trigger("pagebeforecreate");
-})
+
 
 $(document).bind("pagebeforechange", function( event, data ) {
     $.mobile.loading('show', {
@@ -23,7 +21,7 @@ $(document).bind("pagebeforechange", function( event, data ) {
 
     var catg_id = $.mobile.pageData.catg_id;
     var obj_id = $.mobile.pageData.obj_id;
-    var obj_type = $.mobile.pageData.typ_id;
+    var obj_type = $.mobile.pageData.type_id;
 
     var aData = '{ "method": "cmdb.category",' +
         '"params": { ' +
@@ -39,8 +37,8 @@ $(document).bind("pagebeforechange", function( event, data ) {
         '}';
     request(aData, function (json) {
         l_obj_detail_menu = json;
-        $('#headTitle').html(json.result[0].title);
         $('#backButton').attr('href', 'obj_menu.html#obj_menu?type_id='+obj_type);
+        $('#catg_obj_btn').attr('href', 'obj_catg_menu.html#obj_catg_menu?type_id='+obj_type+'&obj_id='+obj_id);
         buildDetail(l_obj_detail_menu, obj_id, obj_type);
     });
     $.mobile.loading('hide');

@@ -6,9 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-$(document).on('click', '.menu_obj_details', function(){
-    $("#obj_details").trigger("pagebeforecreate");
-})
+
 
 
 $(document).bind("pagebeforechange", function( event, data ) {
@@ -53,7 +51,7 @@ function buildObjMenu(p_json_return, p_obj_type) {
     for (var i in p_json_return.result) {
         if (p_json_return.result.hasOwnProperty(i)) {
             item = p_json_return.result[i];
-            list.push('<li><a href="details.html#obj_details?obj_id='+item.id+'&typ_id='+p_obj_type+'&catg_id=1" data-ajax="false" rel="external class="menu_obj_details">' + item.title + '</a></li>');
+            list.push('<li><a href="details.html#obj_details?obj_id='+item.id+'&type_id='+p_obj_type+'&catg_id=1" data-ajax="false" rel="external class="menu_obj_details">' + item.title + '</a></li>');
 
         }
 
