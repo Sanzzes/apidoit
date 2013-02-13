@@ -8,29 +8,35 @@
     <link rel="stylesheet" type="text/css" href="../../media/css/iconpack.css"/>
     <script type="text/javascript" src="../../media/js/jquery.js"></script>
     <script type="text/javascript" src="../../media/js/jquery.mobile-1.3.0.js"></script>
+    <script type="text/javascript" src="../../media/js/md5hash.js"></script>
     <script type="text/javascript" src="../../media/js/jqm.page.params.js"></script>
     <script type="text/javascript" src="../../media/js/obj_details.js"></script>
     <script type="text/javascript" src="../../media/js/request.js"></script>
 </head>
 <body>
 <div data-role="page" id="obj_details">
-    <div data-role="panel" data-theme="a" id="obj_catg_panel" data-display="overlay">
+    <div data-role="panel" data-theme="a" id="obj_catg_panel" data-display="overlay" data-position-fixed="true">
         <div data-role="controlgroup" data-type="vertical">
         <a href="" data-ajax="false" rel="external" id="edit_obj_btn" data-role="button" data-theme="a">Neu Anlegen</a>
         <a href="" data-ajax="false" rel="external" id="new_obj_btn" data-role="button" data-theme="a">Editieren</a>
         <a href="obj_catg_menu.html#obj_catg_menu" data-ajax="false" rel="external" id="catg_obj_btn" data-role="button" data-theme="a">Kategorien</a>
        </div>
+        <a data-rel="close" data-role="button" data-theme="a">Schließen</a>
     </div>
     <!-- /panel -->
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1></h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+            <a href="#" id="saveObjekt" data-role="button" data-icon="check" data-iconpos="left">Speichern</a>
+            <a href="#" id="canceObjekt" data-ajax="false" rel="external" data-role="button" data-icon="delete" data-iconpos="left">Abbrechen</a>
+        </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
             <a href="#obj_catg_panel" id="open_overlay_btn" data-role="button" data-icon="grid" data-iconpos="left">Menü</a>
         <a href="#" id="backButton" data-ajax="false" rel="external" data-role="button" data-icon="back" data-iconpos="left">Zurück</a>
         </div>
     </div>
     <!-- /header -->
-    <div data-role="content" id="obj_details_form">
+    <div data-role="content" id="obj_details_list">
 
     </div>
     <div data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">

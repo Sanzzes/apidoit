@@ -51,7 +51,9 @@ function buildCatgMenu(p_json_return, p_obj_id, p_obj_type) {
             item_temp = p_json_return.result[i];
             for (var s in item_temp){
                 item = item_temp[s];
+                if(item.id != 31){
                 list.push('<li><a href="details.html#obj_details?obj_id='+p_obj_id+'&type_id='+p_obj_type+'&catg_id='+item.id+'" data-ajax="false" rel="external" class="menu_obj_details">' + item.title + '</a></li>');
+                }
             }
         }
     }
