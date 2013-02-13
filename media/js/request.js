@@ -15,7 +15,7 @@ function request(p_json, callback) {
     });
     $.ajax({
         type:'POST',
-        url:'http://steven-bohm.net/idoit-pro/index.php?api=jsonrpc',
+        url: window.localStorage.getItem("hostname"),
         data:p_json,
         crossDomain:true,
         headers:{'idoitapi':'request'},

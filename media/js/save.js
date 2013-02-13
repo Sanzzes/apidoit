@@ -13,6 +13,7 @@ $(document).on('click','#saveConfig', function(){
     window.localStorage.setItem("language", $('#lang').val());
     window.localStorage.setItem("username", $('#username').val());
     window.localStorage.setItem("password", $('#password').val());
+    window.localStorage.setItem("mandator", $('#mandator').val());
     alert('Gespeichert');
 })
 
@@ -22,5 +23,6 @@ $(document).bind("pagebeforechange", function( event, data ) {
     $('#lang').val(window.localStorage.getItem("language"));
     $('#username').val(window.localStorage.getItem("username"));
     $('#password').val(window.localStorage.getItem("password"));
+    $('#mandator').val(window.localStorage.getItem("mandator"));
 });
 

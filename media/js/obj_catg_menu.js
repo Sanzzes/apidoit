@@ -23,10 +23,10 @@ $(document).bind("pagebeforechange", function( event, data ) {
     var aData = '{ "method": "cmdb.object_type_categories",' +
         '"params": { ' +
         '"session": {' +
-        '"username": "admin",' +
-        '"password": "21232f297a57a5a743894a0e4a801fc3",' +
-        '"language": "de",' +
-        '"mandator": 1},' +
+        '"username": "' +window.localStorage.getItem("username")+'",' +
+        '"password": "'+ $.md5(window.localStorage.getItem("password"))+'",' +
+        '"language": "'+ window.localStorage.getItem("language")+'",' +
+        '"mandator": "'+ window.localStorage.getItem("mandator")+'"},' +
         '"type":' + obj_type_id + ',' +
         '"order_by": "title"' +
         '},' +

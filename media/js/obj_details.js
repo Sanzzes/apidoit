@@ -24,10 +24,10 @@ $(document).bind("pagebeforechange", function (event, data) {
     var aData = '{ "method": "cmdb.category",' +
         '"params": { ' +
         '"session": {' +
-        '"username": "admin",' +
-        '"password": "21232f297a57a5a743894a0e4a801fc3",' +
-        '"language": "de",' +
-        '"mandator": 1},' +
+        '"username": "' +window.localStorage.getItem("username")+'",' +
+        '"password": "'+ $.md5(window.localStorage.getItem("password"))+'",' +
+        '"language": "'+ window.localStorage.getItem("language")+'",' +
+        '"mandator": "'+ window.localStorage.getItem("mandator")+'"},' +
         '"objID":' + obj_id + ',' +
         '"catgID": ' + catg_id +
         '},' +
@@ -49,10 +49,10 @@ function buildDetail(p_json_return, p_obj_id, p_obj_type, p_catg_id) {
     var aData = '{ "method": "cmdb.category_info",' +
         '"params": { ' +
         '"session": {' +
-        '"username": "admin",' +
-        '"password": "21232f297a57a5a743894a0e4a801fc3",' +
-        '"language": "de",' +
-        '"mandator": 1},' +
+        '"username": "' +window.localStorage.getItem("username")+'",' +
+        '"password": "'+ $.md5(window.localStorage.getItem("password"))+'",' +
+        '"language": "'+ window.localStorage.getItem("language")+'",' +
+        '"mandator": "'+ window.localStorage.getItem("mandator")+'"},' +
         '"catgID":' + p_catg_id + ',' +
         '"id": ' + p_obj_id +
         '},' +

@@ -2,7 +2,7 @@
     <widget xmlns = "http://www.w3.org/ns/widgets"
         id        = "com.idoit.mobile"
         versionCode="16"
-        version   = "0.0.1">
+        version   = "0.0.2">
 
     <!-- versionCode is optional and Android only -->
 
